@@ -22,8 +22,7 @@ body {
     gap: 40px;
 }
 
-/* Левая часть */
-.hero-section {
+.section {
     width: 450px;
     text-align: center;
 }
@@ -48,18 +47,14 @@ body {
 }
 
 .mockup-container img {
-    /* Управляем размером фото здесь */
     width: 380px; 
     height: auto;
     
-    /* Добавляем легкую тень, чтобы фото не "висело" в воздухе */
     filter: drop-shadow(0 5px 15px rgba(0,0,0,0.08));
-    
-    /* Центрируем, если нужно сместить */
+
     object-fit: contain;
 }
 
-/* Правая часть (Форма) */
 .auth-section {
     width: 350px;
 }
@@ -92,7 +87,7 @@ input {
 .btn-primary {
     width: 100%;
     height: 32px;
-    background-color: #166fe5; /* Тот самый темно-синий */
+    background-color: #166fe5; 
     color: white;
     border: none;
     border-radius: 8px;
@@ -101,7 +96,6 @@ input {
     cursor: pointer;
 }
 
-/* Разделитель ИЛИ */
 .separator {
     display: flex;
     align-items: center;
@@ -154,9 +148,9 @@ input {
     opacity: 0.5;
 }
 
-/* Адаптивность */
 @media (max-width: 800px) {
     .hero-section {
         display: none;
     }
 }   
+
