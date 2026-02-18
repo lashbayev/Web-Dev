@@ -1,0 +1,211 @@
+
+:root{
+    --bg: #f0ece4;
+    --surface: #ffffff;
+    --border: #d9d3c9;
+    --text-primary: #1a1714;
+    --text-muted: #7a7169;
+    --accent: #c84b31;
+    --accent-hover: #a83922;
+    --check-done: #6b9e6b;
+    --done-text: 9a9490;
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    --radius: 10px;
+    --transition: 0.2 ease;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+    background-color: var(--bg);
+    font-family: 'Noto Sans', sans-serif;
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    background-color: var(--text-primary);
+    color: var(--bg);
+    padding: 14px 28px;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 48px 16px 80px;
+}
+
+.app-card{
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 36px 32px;
+    width: 100%;
+    max-width: 520px;
+    height: fit-content;
+}
+
+h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 28px;
+    letter-spacing: -0.02em;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;   
+}
+
+.input-row input[type = "text"] {
+    flex: 1;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 11px 14px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    background: var(--bg);
+    outline: none;
+    transition: border-color var(--transition);
+}
+
+.input-row input[type="text"]:focus {
+  border-color: var(--accent);
+}
+
+.input-row input[type="text"]::placeholder {
+  color: var(--text-muted);
+}
+
+.input-row button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 11px 20px;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background var(--transition), transform var(--transition);
+    white-space: nowrap;
+}
+
+.input-row button:active {
+    transform: translateY(0);
+}
+
+#task-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  transition: border-color var(--transition);
+}
+
+.task-item:hover {
+  border-color: var(--accent);
+}
+
+/* ============================================================
+   13. КАСТОМНЫЙ ЧЕКБОКС
+   ============================================================ */
+.task-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.task-item input[type="checkbox"]:checked {
+  background: #6b9e6b;
+  border-color: #6b9e6b;
+}
+
+.task-item input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+
+.task-label {
+    flex: 1;
+    font-size: 0.95rem;
+    cursor: pointer;
+    word-break: break-word;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--accent);
+    font-size: 1.1rem;
+    padding: 4px;
+    border-radius: 4px;
+    transition: color var(--transition), transform var(--transition);
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.delete-btn:hover {
+    color: var(--accent-hover);
+    transform: scale(1.2);
+}
+
+.empty-msg {
+    text-align: center;
+    padding: 32px 0 16px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.task-item.done .task-label {
+  text-decoration: line-through;
+  color: var(--done-text);
+}       
+
+.task-item.removing {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
